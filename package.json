@@ -1,0 +1,24 @@
+{
+  "name": "quotes",
+  "version": "1.0.0",
+  "description": "quotes api",
+  "main": "index.js",
+  "scripts": {
+    "serve": "node_modules/.bin/firebase serve -p 9090 -o 0.0.0.0",
+    "test": "echo \"Test: no test specified\" && exit 0",
+    "deploy": "node_modules/.bin/firebase deploy --token $FIREBASE_TOKEN"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gang500ml/quotes.git"
+  },
+  "author": "https://gang500.ml",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/gang500ml/quotes/issues"
+  },
+  "homepage": "https://github.com/gang500ml/quotes#readme",
+  "dependencies": {
+    "firebase-tools": "^3.18.4"
+  }
+}
