@@ -56,24 +56,3 @@ exports.getQuote = functions.https.onRequest((req, res) => {
             res.status(500).send('Internal Server Error!');
         });
 });
-
-
-// exports.addQuote = functions.https.onRequest((req, res) => {
-//     const quote = req.query.quote;
-//     return admin.database().ref('/quotes').push({quote: quote}).then((snapshot) => {
-//         // Redirect with 303 SEE OTHER to the URL of the pushed object in the Firebase console.
-//         return res.redirect(303, snapshot.ref.toString());
-//     });
-// });
-
-// exports.addQuoteId = functions.database.ref('/quotes/{pushId}')
-//     .onCreate((snapshot, context) => {
-//         const id = snapshot.ref.parent.child('quotes-count').get();
-//         return snapshot.ref.child('id').set(id); //snapshot.numChildren()
-//     });
-
-// exports.addQuoteId = functions.database.ref('/quotes/{pushId}/quote')
-//     .onCreate((snapshot, context) => {
-//         const id = admin.database().ref('/quotes').numChildren().toString();
-//         return snapshot.ref.parent.child('id').set(id); //snapshot.numChildren()
-//     });
