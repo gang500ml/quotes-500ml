@@ -3,6 +3,8 @@ const admin = require('firebase-admin');
 admin.initializeApp();
 var db = admin.firestore();
 
+const cors = require('cors')({origin: true});
+
 exports.addQuote = functions.https.onRequest((req, res) => {
     const quote = req.query.quote;
     const author = req.query.author;
@@ -28,8 +30,9 @@ exports.addQuote = functions.https.onRequest((req, res) => {
 });
 
 exports.getQuote = functions.https.onRequest((req, res) => {
-    var counter = db.collection('counters').doc('quotes');
-    var getCounter = counter.get()
+    cors(req, res, () => {
+        var counter = db.collection('counters').doc('quotes');
+        var getCounter = counter.get()
         .then(docC => {
             if (!docC.exists) {
                 res.status(404).send('Not found-Counter!');
@@ -54,5 +57,6 @@ exports.getQuote = functions.https.onRequest((req, res) => {
         .catch(err => {
             console.log('Catch error: ', err);
             res.status(500).send('Internal Server Error!');
-        });
+        }); 
+    });
 });

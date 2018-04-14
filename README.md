@@ -2,7 +2,7 @@
 
 [ ![Codeship Status for gang500ml/quotes](https://app.codeship.com/projects/6539a3f0-211e-0136-59a1-4e44aeb0a066/status?branch=master)](https://app.codeship.com/projects/285836)
 
-This is quick and dirty implementation of Quote API which you can get random quotes with simply HTTP get to an API endpoint
+This is a quick and dirty implementation of Quote API which you can simply get random quotes by plain HTTP get method
 
 ## API
 
