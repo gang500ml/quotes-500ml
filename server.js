@@ -16,7 +16,7 @@ const PORT = process.env.PORT || 8080
 app.use('/', express.static(path.join(__dirname, 'public')))
 
 var sess = {
-  secret: 'chompoo 500ml',
+  secret: 'quotes-500ml',
   resave: false,
   saveUninitialized: true,
   cookie: {}
@@ -37,6 +37,21 @@ app.use(flash())
 app.use(passport.initialize())
 app.use(passport.session())
 // app.use(app.router);
+
+
+app.get('/testconnectmongodb', (req, res) => {
+console.log('testconnectmongodb', process.env.DATABASE)
+var mongoose = require('mongoose')
+mongoose.connect(process.env.DATABASE, {auth:{authdb:"admin"}})
+mongoose.set('debug', true)
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+console.log('connected')
+});
+    res.send('ok')
+})
 
 
 app.get('/seed', (req, res) => {
