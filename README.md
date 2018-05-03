@@ -6,7 +6,7 @@ This is a quick and dirty implementation of Quote API which you can simply get r
 
 ## API
 
-https://us-central1-quotes-500ml.cloudfunctions.net/getQuote
+<!--https://us-central1-quotes-500ml.cloudfunctions.net/getQuote-->
 
 ## License
 
