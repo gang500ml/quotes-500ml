@@ -2,12 +2,10 @@
   "name": "quotes-500ml",
   "version": "1.0.0",
   "description": "quotes api",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "serve": "node_modules/.bin/firebase serve -p 9090 -o 0.0.0.0",
-    "test": "echo \"Test: no test specified\" && exit 0",
-    "deploy": "node_modules/.bin/firebase deploy --token $FIREBASE_TOKEN",
-    "deploy-functions": "node_modules/.bin/firebase deploy --only functions"
+    "start": "node server.js",
+    "test": "echo \"Test: no test specified\" && exit 0"
   },
   "repository": {
     "type": "git",
@@ -20,7 +18,17 @@
   },
   "homepage": "https://github.com/gang500ml/quotes-500ml#readme",
   "dependencies": {
-    "firebase-tools": "^3.18.4",
-    "mocha": "^5.1.0"
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.2",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "mocha": "^5.1.0",
+    "mongoose": "^5.0.17",
+    "passport": "^0.4.0",
+    "passport-github2": "^0.1.11",
+    "passport-google-oauth": "^1.0.0",
+    "passport-local": "^1.0.0"
   }
 }
