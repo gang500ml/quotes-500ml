@@ -3,7 +3,7 @@ const endpoint = "https://us-central1-basicblog-mdl.cloudfunctions.net/articles/
 var dialog;
 document.onreadystatechange = () => {
   if (document.readyState === 'complete') {
-    document.getElementById('test-connect-mongodb').addEventListener('click', testconnectmongodb);
+    document.getElementById('test1').addEventListener('click', test1);
     
     // dialog = document.querySelector('dialog');
     // if (!dialog.showModal) {
@@ -29,8 +29,8 @@ document.onreadystatechange = () => {
   }
 };
 
-function testconnectmongodb() {
-  var urlString = "/testconnectmongodb";
+function test1() {
+  var urlString = "/test";
   var xreq = new XMLHttpRequest();
   xreq.addEventListener("load", (e) => {
     var res = JSON.parse(xreq.response);

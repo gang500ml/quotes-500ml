@@ -11,6 +11,9 @@ const passport = require('passport')
 const localstrategy = require('passport-local').Strategy
 const githubstrategy = require('passport-github2').Strategy
 
+const apiRouter = require('./routes/api')
+const testRouter = require('./routes/test')
+
 const PORT = process.env.PORT || 8080
 
 app.use('/', express.static(path.join(__dirname, 'public')))
@@ -36,58 +39,9 @@ app.use(flash())
 
 app.use(passport.initialize())
 app.use(passport.session())
-// app.use(app.router);
 
-
-app.get('/testconnectmongodb', (req, res) => {
-console.log('testconnectmongodb', process.env.DATABASE)
-var mongoose = require('mongoose')
-mongoose.connect(process.env.DATABASE, {auth:{authdb:"admin"}})
-mongoose.set('debug', true)
-
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-console.log('connected')
-});
-    res.send('ok')
-})
-
-
-app.get('/seed', (req, res) => {
-    //var db = new sqlite3.Database(':memory:');
-    db.serialize(function() {
-        db.run("CREATE TABLE users (uname TEXT, upass TEXT, provider TEXT)")
-        
-        var stmt = db.prepare("INSERT INTO users VALUES (?, ?, ?)")
-        for (var i = 0; i < 10; i++) {
-            stmt.run("mr_"+i, i, "email")
-        }
-        stmt.finalize()
-    })
-    db.close()
-})
-
-app.get('/getseeddata', (req, res) => {
-    var result = ""
-    db.serialize(function() {
-        db.each("SELECT rowid AS id, uname, upass, provider FROM users",
-            //retrieved row by row
-            function(err, row) {
-                result += row.id + ": " + row.uname + " " + row.upass + "<br/>" ;
-            },
-            //complete
-            function() {
-                console.log(result)
-                res.send(result)
-            })
-    })
-    db.close()
-})
-
-
-
-
+app.use('/api', apiRouter)
+app.use('/test', testRouter)
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}!`))
 
