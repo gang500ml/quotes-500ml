@@ -2,6 +2,10 @@
   "name": "quotes-500ml",
   "version": "1.0.0",
   "description": "quotes api",
+  "engines": {
+    "node": "8.10.0",
+    "npm": "6.0.0"
+  },
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
